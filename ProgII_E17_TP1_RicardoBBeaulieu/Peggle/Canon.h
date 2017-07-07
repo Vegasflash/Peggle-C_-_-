@@ -13,14 +13,13 @@ public:
 	void Update();
 	void Draw(ID3DXSprite * spriteBatch);
 
-	void CheckRotation();
+	void RotateCanon(float rotation);
 	void SetRotation();
 
 private:
 	// Sprite
-	HWND hwnd;
-	RECT windowRect;
-
+	D3DXVECTOR3 rotEuler;
+	D3DXMATRIX rotMatrix;
 	IDirect3DTexture9* texture;
 	D3DXIMAGE_INFO info;
 	D3DXVECTOR3 position;

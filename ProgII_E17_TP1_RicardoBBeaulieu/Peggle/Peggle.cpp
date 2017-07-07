@@ -18,8 +18,8 @@ Peggle::Peggle(HINSTANCE hInstance, int nCmdShow)
 		d3dPP.BackBufferWidth, d3dPP.BackBufferHeight, 0.01f, 1000.0f);
 
 	// Fixed pipeline
-	HR(gD3DDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE));
 	HR(gD3DDevice->SetRenderState(D3DRS_LIGHTING, false));
+	HR(gD3DDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE));
 
 	HR(gD3DDevice->SetTransform(D3DTS_VIEW, &view));
 	HR(gD3DDevice->SetTransform(D3DTS_PROJECTION, &ortho));
@@ -32,8 +32,8 @@ Peggle::~Peggle()
 
 void Peggle::Update()
 {
-	canon.Update();
-	balle.Update();
+	// GAME MANAGER UPDATE LEVEL ASSETS
+	gameManager.Update();
 }
 
 void Peggle::Draw()
@@ -46,11 +46,12 @@ void Peggle::Draw()
 	HR(spriteBatch->Begin(	D3DXSPRITE_ALPHABLEND | 
 		D3DXSPRITE_OBJECTSPACE | D3DXSPRITE_DONOTMODIFY_RENDERSTATE));
 
-	backGround.Draw(spriteBatch);
-	balle.Draw(spriteBatch);
-	canon.Draw(spriteBatch);
+	// GAME MANAGER DRAW LEVEL WITH ASSETS
+	gameManager.DrawLevel(spriteBatch);
+
 
 	HR(spriteBatch->End());
+
 	HR(gD3DDevice->EndScene());
 
 	HR(gD3DDevice->Present(0, 0, 0, 0));

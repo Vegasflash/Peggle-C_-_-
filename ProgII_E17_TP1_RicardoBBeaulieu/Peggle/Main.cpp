@@ -7,6 +7,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                       _In_ LPWSTR    lpCmdLine,
                       _In_ int       nCmdShow)
 {
+	srand(time(NULL));
+
 	gD3DApp = new Peggle(hInstance, nCmdShow);
 
 	return gD3DApp->Run();

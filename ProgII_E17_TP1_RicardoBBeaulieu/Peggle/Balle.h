@@ -3,31 +3,34 @@
 #include "stdafx.h"
 #include "Sprite.h"
 
-
-#define LEFT 1
-#define RIGHT 2
-
-class Balle : Sprite
+class Balle : public Sprite
 {
 public:
 	Balle();
+	Balle(D3DXVECTOR3* position);
 	~Balle();
 
-	void Update();
+	void Update() override;
+	void Draw(ID3DXSprite* spriteBatch) override;
+
 	void UpdatePosition();
-	void Draw(ID3DXSprite* spriteBatch);
-	void CheckPosition();
-	void SetDirection(int direction);
+
+	void CheckCollision();
 	
 
 
 private:	
 	// Sprite
-	int newDirection;
+	float speed;
+	float dx, dy;
+	float gravity;
+	bool isColliding;
 
-	IDirect3DTexture9* texture;
+	D3DXVECTOR3 newDirection;
+
+	D3DXVECTOR3 center;
 	D3DXIMAGE_INFO info;
 	D3DXVECTOR3 position;
-	D3DXVECTOR3 center;
+	IDirect3DTexture9* texture;
 };
 

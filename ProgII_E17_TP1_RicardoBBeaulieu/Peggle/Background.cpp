@@ -17,6 +17,11 @@ Background::~Background()
 	ReleaseCOM(texture);
 }
 
+void Background::Update()
+{
+
+}
+
 void Background::Draw(ID3DXSprite * spriteBatch)
 {
 	HR(spriteBatch->Draw(texture, 0, &center, &position, D3DCOLOR_XRGB(255, 255, 255)));
